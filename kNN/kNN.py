@@ -1,6 +1,8 @@
+'''
+对应练习2.1
+'''
 from numpy import *
 import operator
-
 
 #生成数据集（很小）
 def createDataSet():
@@ -8,7 +10,15 @@ def createDataSet():
     labels=['A','A','B','B']
     return group,labels
 
-#kNN算法
+'''
+kNN算法
+Input:      inX: vector to compare to existing dataset (1xN)
+            dataSet: size m data set of known vectors (NxM)
+            labels: data set labels (1xM vector)
+            k: number of neighbors to use for comparison (should be an odd number)
+
+Output:     the most popular class label
+'''
 def classify0(inX,dataSet,labels,k):
     dataSetSize=dataSet.shape[0]        #获取第一维度的长度，这里就是获取行数
     diffMat=tile(inX,(dataSetSize,1))-dataSet       #用于获得两个矩阵（目标矩阵和训练数集矩阵）相减的值
@@ -23,7 +33,8 @@ def classify0(inX,dataSet,labels,k):
     sortedClassCount=sorted(classCount.items(),key=operator.itemgetter(1),reverse=True)  #对类别进行排序，选择数量最多的类别
     return sortedClassCount[0][0]
 
-(dataSet,labels)=createDataSet()
-inX=[0,0]
-result=classify0(inX,dataSet,labels,3)
-print(result)
+
+# (dataSet,labels)=createDataSet()
+# inX=[0,0]
+# result=classify0(inX,dataSet,labels,3)
+# print(result)
