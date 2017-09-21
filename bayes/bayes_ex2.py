@@ -31,7 +31,7 @@ def spamTest():
         fullText.extend(wordList)
         classList.append(0)
     vocabList = bayes.createVocabList(docList)  # create vocabulary
-    trainingSet = range(50);
+    trainingSet = list(range(50))
     testSet = []  # create test set
     for i in range(10):
         randIndex = int(random.uniform(0, len(trainingSet)))
